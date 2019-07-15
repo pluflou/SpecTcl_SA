@@ -1,9 +1,9 @@
-INSTDIR=/usr/opt/spectcl/5.1-009
+INSTDIR=/usr/opt/spectcl/previous_current
 #INSTDIR=/usr/opt/spectcl/4.0-007
 include $(INSTDIR)/etc/SpecTcl_Makefile.include
 
 #If you have any switches you need to add to the link add them below:
-USERCXXFLAGS=-std=c++11 -I/usr/opt/ddas/current/include
+USERCXXFLAGS=-std=c++11 -I/usr/opt/ddas/3.0/include
 USERCCFLAGS=$(USERCXXFLAGS)
 
 USERLDFLAGS=-L/usr/opt/ddas/3.0/lib -lDDASUnpacker -lddasformat -Wl,-rpath=/usr/opt/ddas/3.0/lib
