@@ -12,7 +12,7 @@ using namespace std;
 #include "Parameters_ddas.h"
 
 /////////////////////////////////// HABANERO //////////////////////////////////////
-HabaNero::HabaNero(STD(string) name){
+BGOarray::BGOarray(STD(string) name){
   energy.Initialize(name+".energy", 12, 81, 0);
   ecal.Initialize(name+".ecal", 12, 81, 0);
   time.Initialize(name+".time", 20, 81, 0);
@@ -22,7 +22,7 @@ HabaNero::HabaNero(STD(string) name){
   raw.Initialize(this, name+".raw");
 }
 ///////////////////////////////////////////////////////////////////////////////
-void HabaNero::Reset(){
+void BGOarray::Reset(){
   energy.Reset();
   ecal.Reset();
   time.Reset();
@@ -32,7 +32,7 @@ void HabaNero::Reset(){
   raw.Reset();
 }
 ///////////////////////////////////////////////////////////////////////////////
-void HabaNeroRaw::Initialize(HabaNero* treetop, STD(string) name){
+void BGOarrayRaw::Initialize(BGOarray* treetop, STD(string) name){
   top = treetop;
   for(int i=0; i<TOTMOD*CHANPERMOD; i++){
     Char_t detname[11];
@@ -42,7 +42,7 @@ void HabaNeroRaw::Initialize(HabaNero* treetop, STD(string) name){
   }
 }
 ///////////////////////////////////////////////////////////////////////////////
-void HabaNeroRaw::Reset(){
+void BGOarrayRaw::Reset(){
   cout << "reseting HabaNeroraw" << endl;
   for(int i=0; i<chanidhit.size(); i++){
     chanid[chanidhit[i]].Reset();
@@ -50,7 +50,7 @@ void HabaNeroRaw::Reset(){
   chanidhit.clear();
 }
 ///////////////////////////////////////////////////////////////////////////////
-void HabaNeroChanID::Initialize(HabaNero* treetop, STD(string) name){
+void BGOarrayChanID::Initialize(BGOarray* treetop, STD(string) name){
   adc.Initialize(name+".adc",80);//16
   timehigh.Initialize(name+".timehigh", 32);
   timelow.Initialize(name+".timelow", 32);
@@ -61,7 +61,7 @@ void HabaNeroChanID::Initialize(HabaNero* treetop, STD(string) name){
   qsums.Initialize(name+".qsums",16,8,0);
 }
 ///////////////////////////////////////////////////////////////////////////////
-void HabaNeroChanID::Reset(){
+void BGOarrayChanID::Reset(){
   adc.Reset();
   timehigh.Reset();
   timelow.Reset();

@@ -1,5 +1,6 @@
 ////////////////////////////////////////////////////////////////////
 //Edits & Bug fixes for HABANERO: N. Rijal, 02/11/2019
+//Edits for BGOs: S. Ayoub, 08/06/2019
 ////////////////////////////////////////////////////////////////////
 #ifdef HAVE_STD_NAMESPACE
 using namespace std;
@@ -44,7 +45,7 @@ using namespace std;
 int countingevt;
 int badevt;
 //////////////////////////////////////////////////////////////////////////////////////////////
-Bool_t HabaNEROUnpacker::OnAttach(CAnalyzer& rAnalyzer){
+Bool_t BGOUnpacker::OnAttach(CAnalyzer& rAnalyzer){
   cout << "attaching event processor to spectcl and zeroing last timestamp." << endl;
   m_lasttime_low = m_lasttime_high = 0;
   countingevt = 0; //zeroing evt count
@@ -52,7 +53,7 @@ Bool_t HabaNEROUnpacker::OnAttach(CAnalyzer& rAnalyzer){
   return kfTRUE;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-Bool_t HabaNEROUnpacker::OnBegin(CAnalyzer& rAnalyzer,CBufferDecoder& rDecoder){
+Bool_t BGOUnpacker::OnBegin(CAnalyzer& rAnalyzer,CBufferDecoder& rDecoder){
 
   cout << " SpecTcl found data, on begin function " << endl;
 
@@ -76,7 +77,7 @@ Bool_t HabaNEROUnpacker::OnBegin(CAnalyzer& rAnalyzer,CBufferDecoder& rDecoder){
   return kfTRUE;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void HabaNEROUnpacker::ResetChannelList(){
+void BGOUnpacker::ResetChannelList(){
   // cout << "Reseting channel list. Size = " << channellist.size() << endl;
 
   for(channellist_it = channellist.begin(); channellist_it < channellist.end(); channellist_it++) {
@@ -85,7 +86,7 @@ void HabaNEROUnpacker::ResetChannelList(){
   channellist.clear();
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-Bool_t HabaNEROUnpacker::operator()(const Address_t pEvent,
+Bool_t BGOUnpacker::operator()(const Address_t pEvent,
 				    CEvent&         rEvent,
 				    CAnalyzer&      rAnalyzer,
 				    CBufferDecoder& rDecoder){
@@ -192,7 +193,7 @@ Bool_t HabaNEROUnpacker::operator()(const Address_t pEvent,
 /******************** DDAS UNPACKING FUNCTION *********************/
 /******************************************************************/
 
-void HabaNEROUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent &rEvent){
+void BGOUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent &rEvent){
   Int_t eventsize = channellist.size();
   //ddasdiagnostics.cmult = eventsize;
 
@@ -200,7 +201,7 @@ void HabaNEROUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent 
   double starttime_high, endtime_high;
     
   channellist_it = channellist.begin(); 
-  //HabaNERO.raw.chanidhit.clear();
+  //BGO.raw.chanidhit.clear();
 
   for (channellist_it = channellist.begin(); 
        channellist_it < channellist.end(); channellist_it++) {
@@ -214,17 +215,17 @@ void HabaNEROUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent 
     if ((*channellist_it)->id <16){    
       
       //Unpack the data according to the channel id number
-      HabaNERO.raw.chanidhit.push_back((*channellist_it)->id);
-      HabaNERO.raw.chanid[(*channellist_it)->id].adc       = ((*channellist_it)->energy);
+      BGO.raw.chanidhit.push_back((*channellist_it)->id);
+      BGO.raw.chanid[(*channellist_it)->id].adc       = ((*channellist_it)->energy);
 
-      HabaNERO.raw.chanid[(*channellist_it)->id].timehigh  = ((*channellist_it)->timehigh);
+      BGO.raw.chanid[(*channellist_it)->id].timehigh  = ((*channellist_it)->timehigh);
 
-      HabaNERO.raw.chanid[(*channellist_it)->id].timelow   = ((*channellist_it)->timelow);
+      BGO.raw.chanid[(*channellist_it)->id].timelow   = ((*channellist_it)->timelow);
 
-      HabaNERO.raw.chanid[(*channellist_it)->id].timecfd   = ((*channellist_it)->timecfd);
+      BGO.raw.chanid[(*channellist_it)->id].timecfd   = ((*channellist_it)->timecfd);
 
-      HabaNERO.raw.chanid[(*channellist_it)->id].time      = ((*channellist_it)->time);
-      HabaNERO.raw.chanid[(*channellist_it)->id].overflow      = ((*channellist_it)->overflowcode);
+      BGO.raw.chanid[(*channellist_it)->id].time      = ((*channellist_it)->time);
+      BGO.raw.chanid[(*channellist_it)->id].overflow      = ((*channellist_it)->overflowcode);
 
       endtime_low = (*channellist_it)->timelow;
       endtime_high = (*channellist_it)->timehigh;
@@ -240,7 +241,7 @@ void HabaNEROUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent 
 }
 // Just printout something when an end of run is seen:
 //////////////////////////////////////////////////////////////////////////////////////////////
-Bool_t HabaNEROUnpacker::OnEnd(CAnalyzer& rAnalyzer,CBufferDecoder& rDecoder){
+Bool_t BGOUnpacker::OnEnd(CAnalyzer& rAnalyzer,CBufferDecoder& rDecoder){
   //cout << "Number of events = " << dec << countingevt << " and number of bad events = " << dec << badevt << "." << endl;
   cerr << "End of run encountered on data source\n";\
     return kfTRUE;

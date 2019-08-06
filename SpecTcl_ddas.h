@@ -7,22 +7,22 @@
    Edits & Bug fixes for HABANERO: N. Rijal, 02/11/2019
 ***************************************************************************/
 
-#ifndef __HABANEROSPECTCL_H  //Required for current class
+#ifndef __BGOSPECTCL_H  //Required for current class
 
-#define __HABANEROSPECTCL_H
+#define __BGOSPECTCL_H
                                //Required for base classes
 #ifndef __TCLGRAMMERAPP_H      //CTclGrammerApp
 #include "TclGrammerApp.h"
 #endif
  
 
-class HabaNEROSpecTcl  : public CTclGrammerApp        
+class BGOSpecTcl  : public CTclGrammerApp        
 {
  public:
   
-  HabaNEROSpecTcl ();  /* Default constructor alternative to compiler 
+  BGOSpecTcl ();  /* Default constructor alternative to compiler 
 			 provided default constructor */
-  ~ HabaNEROSpecTcl ();  /* Destructor - Delete any pointer data members 
+  ~ BGOSpecTcl ();  /* Destructor - Delete any pointer data members 
 			   that used new in constructors.  Destructor 
 			   should be virtual if and only if class contains 
 			   at least one virtual function. Objects 
@@ -31,10 +31,10 @@ class HabaNEROSpecTcl  : public CTclGrammerApp
 
  private:
   
-  HabaNEROSpecTcl (const HabaNEROSpecTcl& aHabaNEROSpecTcl ); // Copy constructor
+  BGOSpecTcl (const BGOSpecTcl& aBGOSpecTcl ); // Copy constructor
   
-  HabaNEROSpecTcl& operator= (const HabaNEROSpecTcl& aHabaNEROSpecTcl);
-  int operator == (const HabaNEROSpecTcl& aHabaNEROSpecTcl) const;
+  BGOSpecTcl& operator= (const BGOSpecTcl& aBGOSpecTcl);
+  int operator == (const BGOSpecTcl& aBGOSpecTcl) const;
   
  public:
   

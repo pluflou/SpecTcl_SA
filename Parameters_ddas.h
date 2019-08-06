@@ -1,11 +1,10 @@
 ////     File: Parameters_ddas.h
-#ifndef __HABANEROPARAMETERS_H
-#define __HABANEROPARAMETERS_H
+#ifndef __BGOPARAMETERS_H
+#define __BGOPARAMETERS_H
 
 #include <TreeParameter.h>
 
-//extern class betadecay bdecay;
-extern class HabaNero HabaNERO;
+extern class BGOarray BGO;
 extern class ioncounter IC;
 extern class DdasDiagnostics ddasdiagnostics;
 // Bit registers 
@@ -19,12 +18,12 @@ extern class DdasDiagnostics ddasdiagnostics;
 #ifdef HAVE_STD_NAMESPACE
 using namespace std;
 #endif
-//////////////////////////////// HABANERO /////////////////////////////////
+//////////////////////////////// BGO /////////////////////////////////
 
-class HabaNeroChanID
+class BGOarrayChanID
 {
  private:
-  HabaNero *top;
+  BGOarray *top;
   
  public:
   CTreeParameter adc;
@@ -37,26 +36,26 @@ class HabaNeroChanID
   CTreeParameterArray qsums;
 
  public:
-  void Initialize(HabaNero* top, STD(string) name);
+  void Initialize(BGOarray* top, STD(string) name);
   void Reset();
 };
 ///////////////////////////////////////////////////////////////////////
-class HabaNeroRaw
+class BGOarrayRaw
 {
  private:
-  HabaNero *top;
+  BGOarray *top;
   
  public:
-  HabaNeroChanID chanid[TOTMOD*CHANPERMOD];
+  BGOarrayChanID chanid[TOTMOD*CHANPERMOD];
 
   vector<int> chanidhit;
 
  public:
-  void Initialize(HabaNero* top, STD(string) name);
+  void Initialize(BGOarray* top, STD(string) name);
   void Reset();
 };
 ///////////////////////////////////////////////////////////////////////
-class HabaNero
+class BGOarray
 {
  public:
   
@@ -66,10 +65,10 @@ class HabaNero
   CTreeParameterArray timecfd;
   CTreeParameterArray timelow;
   CTreeParameterArray timehigh;
-  HabaNeroRaw raw;
+  BGOarrayRaw raw;
 
  public:
-  HabaNero(STD(string) name);
+  BGOarray(STD(string) name);
   void Reset();
 };
 ///////////////////////////////////////////////////////////////////////

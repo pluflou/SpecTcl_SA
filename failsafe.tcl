@@ -1,23 +1,23 @@
-#  SpecTclGUI save file created Mon Jul 15 16:56:48 EDT 2019
+#  SpecTclGUI save file created Tue Aug 06 16:58:54 EDT 2019
 #  SpecTclGui Version: 1.0
 #      Author: Ron Fox (fox@nscl.msu.edu)
 
 #Tree params:
 
-catch {treeparameter -create HabaNERO.ecal.00 0 4096 4096 unknown}
-treeparameter -setlimits HabaNERO.ecal.00 0 4096
-treeparameter -setbins   HabaNERO.ecal.00 4096
-treeparameter -setunit   HabaNERO.ecal.00 unknown
+catch {treeparameter -create BGO.ecal.00 0 4096 4096 unknown}
+treeparameter -setlimits BGO.ecal.00 0 4096
+treeparameter -setbins   BGO.ecal.00 4096
+treeparameter -setunit   BGO.ecal.00 unknown
 
-catch {treeparameter -create HabaNERO.energy.00 0 4096 4096 unknown}
-treeparameter -setlimits HabaNERO.energy.00 0 4096
-treeparameter -setbins   HabaNERO.energy.00 4096
-treeparameter -setunit   HabaNERO.energy.00 unknown
+catch {treeparameter -create BGO.energy.00 0 4096 4096 unknown}
+treeparameter -setlimits BGO.energy.00 0 4096
+treeparameter -setbins   BGO.energy.00 4096
+treeparameter -setunit   BGO.energy.00 unknown
 
-catch {treeparameter -create HabaNERO.raw.chanid000.adc 0 65536 65536 unknown}
-treeparameter -setlimits HabaNERO.raw.chanid000.adc 0 65536
-treeparameter -setbins   HabaNERO.raw.chanid000.adc 65536
-treeparameter -setunit   HabaNERO.raw.chanid000.adc unknown
+catch {treeparameter -create BGO.raw.chanid000.adc 0 65536 65536 unknown}
+treeparameter -setlimits BGO.raw.chanid000.adc 0 65536
+treeparameter -setbins   BGO.raw.chanid000.adc 65536
+treeparameter -setunit   BGO.raw.chanid000.adc unknown
 
 
 # Pseudo parameter definitions
@@ -31,8 +31,8 @@ treeparameter -setunit   HabaNERO.raw.chanid000.adc unknown
 
 # Spectrum Definitions
 
-catch {spectrum -delete JINA_ModID00_ChID00}
-spectrum JINA_ModID00_ChID00 1 HabaNERO.raw.chanid000.adc {{0.000000 40000.000000 8000}} long
+catch {spectrum -delete BGO_ModID00_ChID00}
+spectrum BGO_ModID00_ChID00 1 BGO.raw.chanid000.adc {{0.000000 40000.000000 8000}} long
 
 # Gate Applications: 
 

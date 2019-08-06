@@ -3,9 +3,10 @@
    Based on standard BCS SpecTcl codes
    S.N.Liddick/H.L.Crawford. Updated for DDAS 6/2/2010
    Edits & Bug fixes for HABANERO: N. Rijal, 02/11/2019
+   Edits for BGOs: S. Ayoub, 08/06/2019
 ***************************************************************************/
-#ifndef __HABANEROUNPACKER_H
-#define __HABANEROUNPACKER_H
+#ifndef __BGOUNPACKER_H
+#define __BGOUNPACKER_H
 
 #ifndef __EVENTPROCESSOR_H
 #include <EventProcessor.h>
@@ -27,7 +28,7 @@ using namespace std;
 /* Define a class known only to Unpacker that can accumulate 
    ddas channels sorted into true events. */
 ////////////////////////////////////////////////////////////////////////////////////////////////
-class HabaNEROUnpacker : public  CEventProcessor{
+class BGOUnpacker : public  CEventProcessor{
   
  public:
   vector<ddaschannel*>  channellist;               //!< collection of channels within one event

@@ -6,6 +6,7 @@
    S.N.Liddick/H.L.Crawford. Updated for DDAS 6/2/2010
    T.Ahn. Updated for HabaNERO 12/8/2015
    Edits & Bug fixes for HABANERO: N. Rijal, 02/11/2019
+   Edited for BGO: S. Ayoub, 08/06/2019
 ***************************************************************************/
 #ifdef HAVE_STD_NAMESPACE
 using namespace std;
@@ -33,36 +34,36 @@ using namespace std;
 #include "Unpacker_ddas.h"
 #include "Parameters_ddas.h"
 
-HabaNero HabaNERO("HabaNERO");
+BGOarray BGO("BGOarray");
 
 // Create  unpacker (see Unpacker.cpp)
-static HabaNEROUnpacker UnpackHabaNERO;
+static BGOUnpacker UnpackBGO;
 
-void HabaNEROSpecTcl::CreateAnalysisPipeline(CAnalyzer& rAnalyzer)  
+void BGOSpecTcl::CreateAnalysisPipeline(CAnalyzer& rAnalyzer)  
 { 
-  RegisterEventProcessor(UnpackHabaNERO, "UnpackH");
+  RegisterEventProcessor(UnpackBGO, "UnpackB");
 }  
 
 
 // Constructors, destructors and other replacements for compiler cannonicals:
-HabaNEROSpecTcl::HabaNEROSpecTcl ()
+BGOSpecTcl::BGOSpecTcl ()
 {   
 }
 
 
 // Destructor:
-HabaNEROSpecTcl::~HabaNEROSpecTcl ( )
+BGOSpecTcl::~BGOSpecTcl ( )
 {
 } 
 
 
-void HabaNEROSpecTcl::BindTCLVariables(CTCLInterpreter& rInterp)  
+void BGOSpecTcl::BindTCLVariables(CTCLInterpreter& rInterp)  
 { 
   CTclGrammerApp::BindTCLVariables(rInterp);
 }  
 
 
-void HabaNEROSpecTcl::SourceLimitScripts(CTCLInterpreter& rInterpreter)  
+void BGOSpecTcl::SourceLimitScripts(CTCLInterpreter& rInterpreter)  
 { 
   CTclGrammerApp::SourceLimitScripts(rInterpreter);
 }  
@@ -70,72 +71,72 @@ void HabaNEROSpecTcl::SourceLimitScripts(CTCLInterpreter& rInterpreter)
 
 
 
-void HabaNEROSpecTcl::SetLimits()  
+void BGOSpecTcl::SetLimits()  
 { 
   CTclGrammerApp::SetLimits();
 }  
 
 
 
-void HabaNEROSpecTcl::CreateHistogrammer()  
+void BGOSpecTcl::CreateHistogrammer()  
 { 
   CTclGrammerApp::CreateHistogrammer();
 }  
 
 
 
-void HabaNEROSpecTcl::SelectDisplayer(UInt_t nDisplaySize, CHistogrammer& rHistogrammer)  
+void BGOSpecTcl::SelectDisplayer(UInt_t nDisplaySize, CHistogrammer& rHistogrammer)  
 { CTclGrammerApp::SelectDisplayer(nDisplaySize, rHistogrammer);
 }  
 
 
 
 void 
-HabaNEROSpecTcl::SetupTestDataSource()  
+BGOSpecTcl::SetupTestDataSource()  
 { CTclGrammerApp::SetupTestDataSource();
 }  
 
 
 
 void 
-HabaNEROSpecTcl::CreateAnalyzer(CEventSink* pSink)  
+BGOSpecTcl::CreateAnalyzer(CEventSink* pSink)  
 { CTclGrammerApp::CreateAnalyzer(pSink);
 }  
 
 
 void 
-HabaNEROSpecTcl::SelectDecoder(CAnalyzer& rAnalyzer)  
+BGOSpecTcl::SelectDecoder(CAnalyzer& rAnalyzer)  
 { 
   CTclGrammerApp::SelectDecoder(rAnalyzer);
 }  
 
 
 void 
-HabaNEROSpecTcl::AddCommands(CTCLInterpreter& rInterp)  
+BGOSpecTcl::AddCommands(CTCLInterpreter& rInterp)  
 { 
   CTclGrammerApp::AddCommands(rInterp);
   //AddServerCommands(this, rInterp);
 }  
 
 void 
-HabaNEROSpecTcl::SetupRunControl()  
+BGOSpecTcl::SetupRunControl()  
 { 
   CTclGrammerApp::SetupRunControl();
 }  
 
 
 void 
-HabaNEROSpecTcl::SourceFunctionalScripts(CTCLInterpreter& rInterp)  
+BGOSpecTcl::SourceFunctionalScripts(CTCLInterpreter& rInterp)  
 { 
   CTclGrammerApp::SourceFunctionalScripts(rInterp);
 }  
 
-int HabaNEROSpecTcl::operator()()  
+int BGOSpecTcl::operator()()  
 { 
   return CTclGrammerApp::operator()();
 }
 
-HabaNEROSpecTcl   myApp;
+BGOSpecTcl   myApp;
 
 #ifdef SPECTCL_5_INIT
 CTclGrammerApp* CTclGrammerApp::m_pInstance = &myApp; 
