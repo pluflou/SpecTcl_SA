@@ -1,4 +1,4 @@
-#  SpecTclGUI save file created Tue Jun 25 13:42:28 EDT 2019
+#  SpecTclGUI save file created Tue Aug 06 17:18:16 EDT 2019
 #  SpecTclGui Version: 1.0
 #      Author: Ron Fox (fox@nscl.msu.edu)
 
@@ -32,6 +32,8 @@ treeparameter -setunit   BGO.raw.chanid000.adc unknown
 # Spectrum Definitions
 
 spectrum BGO_ModID00_ChID00 1 BGO.raw.chanid000.adc {{0.000000 40000.000000 8000}} long
+spectrum bgoarray 1 BGOarray.raw.chanid000.adc {{0.000000 65536.000000 65536}} long
+spectrum bgonotarray 1 BGO.raw.chanid000.adc {{0.000000 65536.000000 65536}} long
 
 # Gate Applications: 
 
