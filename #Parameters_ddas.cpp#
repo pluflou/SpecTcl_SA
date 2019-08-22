@@ -13,9 +13,9 @@ using namespace std;
 
 /////////////////////////////////// HABANERO //////////////////////////////////////
 BGOarray::BGOarray(STD(string) name){
-  energy.Initialize(name+".energy", 12, 32, 0);
-  ecal.Initialize(name+".ecal", 12, 81, 0);
-  time.Initialize(name+".time", 20, 81, 0);
+  energy.Initialize(name+".energy", 12, 32,0);
+  ecal.Initialize(name+".ecal", 12, 32, 0);
+  time.Initialize(name+".time", 20, 32, 0);
   timecfd.Initialize(name+".timecfd", 20, 81, 0);
   timelow.Initialize(name+".timelow", 20, 81, 0);
   timehigh.Initialize(name+".timehigh", 20, 81, 0);
@@ -51,7 +51,7 @@ void BGOarrayRaw::Reset(){
 }
 ///////////////////////////////////////////////////////////////////////////////
 void BGOarrayChanID::Initialize(BGOarray* treetop, STD(string) name){
-  adc.Initialize(name+".adc",32);//16
+  adc.Initialize(name+".adc",80);//16
   timehigh.Initialize(name+".timehigh", 32);
   timelow.Initialize(name+".timelow", 32);
   timecfd.Initialize(name+".timecfd", 32);

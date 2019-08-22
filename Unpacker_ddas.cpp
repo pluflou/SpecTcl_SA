@@ -200,7 +200,8 @@ void BGOUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent &rEve
   double starttime_low, endtime_low;
   double starttime_high, endtime_high;
     
-  channellist_it = channellist.begin(); 
+  channellist_it = channellist.begin();
+  //cout<<"new event"<<endl; 
   //BGO.raw.chanidhit.clear();
 
   for (channellist_it = channellist.begin(); 
@@ -212,10 +213,12 @@ void BGOUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent &rEve
 	starttime_high = (*channellist_it)->timehigh;
     }
 
-    if ((*channellist_it)->id <16){    
+    if ((*channellist_it)->id <32){    
       
       //Unpack the data according to the channel id number
       BGO.raw.chanidhit.push_back((*channellist_it)->id);
+      //cout<<(*channellist_it)->id<<" "<<(*channellist_it)->energy<<endl;
+
       BGO.raw.chanid[(*channellist_it)->id].adc       = ((*channellist_it)->energy);
 
       BGO.raw.chanid[(*channellist_it)->id].timehigh  = ((*channellist_it)->timehigh);
@@ -231,7 +234,7 @@ void BGOUnpacker::ddastospectcl(vector<ddaschannel *> &channellist, CEvent &rEve
       endtime_high = (*channellist_it)->timehigh;
     }
     
-    if ((*channellist_it)->id >= 16){
+    if ((*channellist_it)->id >= 32){
       //cout << "id=" << (*channellist_it)->id <<  "energy = " <<  ((*channellist_it)->energy) << endl;
       endtime_low = (*channellist_it)->timelow;
       endtime_high = (*channellist_it)->timehigh;
